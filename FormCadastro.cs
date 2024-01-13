@@ -221,16 +221,6 @@ namespace Relogio_Ponto
             InitializeComponent();
         }
 
-        
-        private static Usuario[] usuarios =
-        {
-            /*//usuario teste
-            new Usuario()
-            {
-                UserName = "Igor", Senha = "piteco"
-            },*/
-
-        };
         private void btnEnviar_Click(object sender, EventArgs e)
         {
             

@@ -50,7 +50,7 @@ namespace Relogio_Ponto
             }
             else
             {
-                MessageBox.Show("Acesso negado!");
+                MessageBox.Show("Login ou senha incorreto!");
                 txtUsuario.Text = "";
                 txtSenha.Text = "";
                 txtUsuario.Focus();
@@ -87,7 +87,7 @@ namespace Relogio_Ponto
             }
             else
             {
-                MessageBox.Show("Acesso negado!");
+                MessageBox.Show("Login ou senha incorreto!");
                 txtUsuario.Text = "";
                 txtSenha.Text = "";
                 txtUsuario.Focus();

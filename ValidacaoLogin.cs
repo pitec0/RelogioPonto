@@ -9,7 +9,15 @@ namespace Relogio_Ponto
     internal partial class FormCadastro
     {
 
+        private static Usuario[] usuarios =
+        {
+            //usuario teste
+            new Usuario()
+            {
+                UserName = "igor", Senha = "igor"
+            },
 
+        };
 
         private static Usuario _userLogado = null;
 
