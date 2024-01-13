@@ -8,6 +8,9 @@ namespace Relogio_Ponto
 {
     internal partial class FormCadastro
     {
+
+
+
         private static Usuario _userLogado = null;
 
         public static Usuario UsuarioLogado
@@ -28,5 +31,7 @@ namespace Relogio_Ponto
             }
             return false;
         }
+
+        
     }
 }

@@ -224,7 +224,11 @@ namespace Relogio_Ponto
         
         private static Usuario[] usuarios =
         {
-
+            /*//usuario teste
+            new Usuario()
+            {
+                UserName = "Igor", Senha = "piteco"
+            },*/
 
         };
         private void btnEnviar_Click(object sender, EventArgs e)
@@ -266,6 +270,7 @@ namespace Relogio_Ponto
                 txtEmail.Focus();
                 return;
             }
+
             
             List<Usuario> listaUsuarios = new List<Usuario>();
 
@@ -278,6 +283,7 @@ namespace Relogio_Ponto
                 Telefone = txtTel.Text,
                 Email = txtEmail.Text
             };
+
 
             listaUsuarios.Add(novoUsuario);
 
