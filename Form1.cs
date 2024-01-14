@@ -52,6 +52,9 @@ namespace Relogio_Ponto
       txtUsuario.Text = string.Empty;
       txtSenha.Text = string.Empty;
 
+      // fazer envio para banco de dados da hora de saída
+
+
     }
 
     private void btnSaida_Click(object sender, EventArgs e)
