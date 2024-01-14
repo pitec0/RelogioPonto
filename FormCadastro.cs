@@ -1,11 +1,14 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace Relogio_Ponto
 {
+
   internal partial class FormCadastro : Form
   {
+    
     private Label lblUserName;
     private Label lblNomeC;
     private Label lblCPF;
@@ -215,6 +218,7 @@ namespace Relogio_Ponto
     public FormCadastro()
     {
       InitializeComponent();
+      
     }
 
     private void btnEnviar_Click(object sender, EventArgs e)
@@ -258,6 +262,9 @@ namespace Relogio_Ponto
 
       List<Usuario> listaUsuarios = new List<Usuario>();
 
+      Random random = new Random();
+      int randomId = random.Next(1, 999999);
+
       Usuario novoUsuario = new Usuario
       {
         UserName = txtUserName.Text,
@@ -265,14 +272,45 @@ namespace Relogio_Ponto
         NomeCompleto = txtNomeC.Text,
         CPF = txtCPF.Text,
         Telefone = txtTel.Text,
-        Email = txtEmail.Text
+        Email = txtEmail.Text,
+        ID = randomId.ToString()
       };
 
       listaUsuarios.Add(novoUsuario);
 
-      usuarios = listaUsuarios.ToArray();
+      try
+      {
+        string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
 
-      //enviar dados para banco de dados.
+        using (MySqlConnection conexao = new MySqlConnection(strConnection))
+        {
+          conexao.Open();
+
+          using (MySqlCommand comando = new MySqlCommand())
+          {
+            comando.Connection = conexao;
+            comando.CommandText = "INSERT INTO usuarios (id, user_name, password, nome_completo, cpf_user, tel_user, email) " +
+                                  "VALUES (@id, @user_name, @password, @nome_completo, @cpf_user, @tel_user, @email)";
+            comando.Parameters.AddWithValue("@id", novoUsuario.ID);
+            comando.Parameters.AddWithValue("@user_name", novoUsuario.UserName);
+            comando.Parameters.AddWithValue("@password", novoUsuario.Senha);
+            comando.Parameters.AddWithValue("@nome_completo", novoUsuario.NomeCompleto);
+            comando.Parameters.AddWithValue("@cpf_user", novoUsuario.CPF);
+            comando.Parameters.AddWithValue("@tel_user", novoUsuario.Telefone);
+            comando.Parameters.AddWithValue("@email", novoUsuario.Email);
+
+            comando.ExecuteNonQuery();
+
+            MessageBox.Show("Cadastrado com sucesso!");
+          }
+        }
+      }
+      catch (Exception ex)
+      {
+        MessageBox.Show("Erro ao Cadastrar, por favor tente novamente! \n" + ex.Message);
+      }
+
+      Close();
     }
 
     private void btnCancelar_Click(object sender, EventArgs e)
