@@ -261,6 +261,7 @@ namespace Relogio_Ponto
                 txtEmail.Focus();
                 return;
             }
+
             
             List<Usuario> listaUsuarios = new List<Usuario>();
 
@@ -273,6 +274,7 @@ namespace Relogio_Ponto
                 Telefone = txtTel.Text,
                 Email = txtEmail.Text
             };
+
 
             listaUsuarios.Add(novoUsuario);
 

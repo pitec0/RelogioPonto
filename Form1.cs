@@ -29,13 +29,13 @@ namespace Relogio_Ponto
         private void btnEntrada_Click(object sender, EventArgs e)
         {
             DateTime now = DateTime.Now;
-            if (txtUsuario.Text == " ")
+            if (txtUsuario.Text == "")
             {
                 MessageBox.Show("Preencha o campo Usuário.");
                 txtUsuario.Focus();
                 return;
             }
-            if (txtSenha.Text == " ")
+            if (txtSenha.Text == "")
             {
                 MessageBox.Show("Preencha o campo Senha.");
                 txtSenha.Focus();
@@ -43,13 +43,14 @@ namespace Relogio_Ponto
             }
             string nome = txtUsuario.Text;
             string senha = txtSenha.Text;
+
             if (FormCadastro.Login(nome, senha))
             {
                 MessageBox.Show("Entrada realizada em " + now);
             }
             else
             {
-                MessageBox.Show("Acesso negado!");
+                MessageBox.Show("Login ou senha incorreto!");
                 txtUsuario.Text = "";
                 txtSenha.Text = "";
                 txtUsuario.Focus();
@@ -58,6 +59,8 @@ namespace Relogio_Ponto
                 txtUsuario.Text = string.Empty;
                 txtSenha.Text = string.Empty;
             
+
+
             //fazer envio para banco de dados da hora de entrada
         }
 
@@ -84,7 +87,7 @@ namespace Relogio_Ponto
             }
             else
             {
-                MessageBox.Show("Acesso negado!");
+                MessageBox.Show("Login ou senha incorreto!");
                 txtUsuario.Text = "";
                 txtSenha.Text = "";
                 txtUsuario.Focus();
