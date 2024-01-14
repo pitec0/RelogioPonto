@@ -2,6 +2,7 @@
 {
   internal class Usuario
   {
+    public string ID { get; set; }
     public string UserName { get; set; }
     public string Senha { get; set; }
     public string NomeCompleto { get; set; }

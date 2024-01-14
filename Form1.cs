@@ -15,15 +15,9 @@ namespace Relogio_Ponto
 {
   public partial class Form1 : Form
   {
-    public Form1()
-    {
-      InitializeComponent();
-    }
-
     private void Form1_Load(object sender, EventArgs e)
     {
     }
-
     private void btnEntrada_Click(object sender, EventArgs e)
     {
       DateTime now = DateTime.Now;
@@ -42,7 +36,9 @@ namespace Relogio_Ponto
       string nome = txtUsuario.Text;
       string senha = txtSenha.Text;
 
-      if (FormCadastro.Login(nome, senha))
+      FormCadastro formCadastro = new FormCadastro();
+
+      if (formCadastro.ConsultarDados(nome, senha))
       {
         MessageBox.Show("Entrada realizada em " + now);
       }
@@ -52,24 +48,22 @@ namespace Relogio_Ponto
         txtUsuario.Text = "";
         txtSenha.Text = "";
         txtUsuario.Focus();
-        this.Close();
       }
       txtUsuario.Text = string.Empty;
       txtSenha.Text = string.Empty;
 
-      //fazer envio para banco de dados da hora de entrada
     }
 
     private void btnSaida_Click(object sender, EventArgs e)
     {
       DateTime now = DateTime.Now;
-      if (txtUsuario.Text == " ")
+      if (txtUsuario.Text == "")
       {
         MessageBox.Show("Preencha o campo Usuário.");
         txtUsuario.Focus();
         return;
       }
-      if (txtSenha.Text == " ")
+      if (txtSenha.Text == "")
       {
         MessageBox.Show("Preencha o campo Senha.");
         txtSenha.Focus();
@@ -77,9 +71,12 @@ namespace Relogio_Ponto
       }
       string nome = txtUsuario.Text;
       string senha = txtSenha.Text;
-      if (FormCadastro.Login(nome, senha))
+
+      FormCadastro formCadastro = new FormCadastro();
+
+      if (formCadastro.ConsultarDados(nome, senha))
       {
-        MessageBox.Show("Saida realizada em " + now);
+        MessageBox.Show("Saída realizada em " + now);
       }
       else
       {
@@ -87,12 +84,11 @@ namespace Relogio_Ponto
         txtUsuario.Text = "";
         txtSenha.Text = "";
         txtUsuario.Focus();
-        this.Close();
       }
       txtUsuario.Text = string.Empty;
       txtSenha.Text = string.Empty;
 
-      //fazer envio para banco de dados da hora de saida
+      // fazer envio para banco de dados da hora de saída
     }
 
     private void btnCadastrar_Click(object sender, EventArgs e)
