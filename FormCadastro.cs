@@ -153,7 +153,6 @@ namespace Relogio_Ponto
       this.btnEnviar.UseVisualStyleBackColor = true;
       this.btnEnviar.Click += new System.EventHandler(this.btnEnviar_Click);
       //
-      // btnCancelar
       //
       this.btnCancelar.Location = new System.Drawing.Point(322, 376);
       this.btnCancelar.Name = "btnCancelar";
