@@ -1,15 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
-using Org.BouncyCastle.Utilities;
 
 namespace Relogio_Ponto
 {
@@ -17,30 +9,68 @@ namespace Relogio_Ponto
   {
     private void Form1_Load(object sender, EventArgs e)
     {
+      // Se necessário, adicione código de inicialização aqui.
     }
+
     private void btnEntrada_Click(object sender, EventArgs e)
     {
       DateTime now = DateTime.Now;
+
       if (txtUsuario.Text == "")
       {
         MessageBox.Show("Preencha o campo Usuário.");
         txtUsuario.Focus();
         return;
       }
+
       if (txtSenha.Text == "")
       {
         MessageBox.Show("Preencha o campo Senha.");
         txtSenha.Focus();
         return;
       }
+
       string nome = txtUsuario.Text;
       string senha = txtSenha.Text;
 
       FormCadastro formCadastro = new FormCadastro();
 
-      if (formCadastro.ConsultarDados(nome, senha))
+      Tuple<bool, string, string, string> resultadoAutenticacao = formCadastro.ConsultarDados(nome, senha);
+
+      if (resultadoAutenticacao.Item1)
       {
-        MessageBox.Show("Entrada realizada em " + now);
+        string id = resultadoAutenticacao.Item2;
+        string nomeCompleto = resultadoAutenticacao.Item3;
+        string nomeUsuario = resultadoAutenticacao.Item4;
+
+
+        try
+        {
+          string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
+
+          using (MySqlConnection conexao = new MySqlConnection(strConnection))
+          {
+            conexao.Open();
+
+            using (MySqlCommand comando = new MySqlCommand())
+            {
+              comando.Connection = conexao;
+              comando.CommandText = "INSERT INTO logins (nome_logado, dayNhour) " +
+                                    "VALUES (@nome_completo, @data_registro)";
+              comando.Parameters.AddWithValue("@nome_completo", nomeCompleto);
+              comando.Parameters.AddWithValue("@data_registro", DateTime.Now);
+
+              comando.ExecuteNonQuery();
+
+              MessageBox.Show("Entrada realizada em " + DateTime.Now);
+
+            }
+          }
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("Erro \n" + ex.Message);
+        }
       }
       else
       {
@@ -49,37 +79,68 @@ namespace Relogio_Ponto
         txtSenha.Text = "";
         txtUsuario.Focus();
       }
+
       txtUsuario.Text = string.Empty;
       txtSenha.Text = string.Empty;
-
-      // fazer envio para banco de dados da hora de saída
-
-
     }
 
     private void btnSaida_Click(object sender, EventArgs e)
     {
       DateTime now = DateTime.Now;
+
       if (txtUsuario.Text == "")
       {
         MessageBox.Show("Preencha o campo Usuário.");
         txtUsuario.Focus();
         return;
       }
+
       if (txtSenha.Text == "")
       {
         MessageBox.Show("Preencha o campo Senha.");
         txtSenha.Focus();
         return;
       }
+
       string nome = txtUsuario.Text;
       string senha = txtSenha.Text;
 
       FormCadastro formCadastro = new FormCadastro();
 
-      if (formCadastro.ConsultarDados(nome, senha))
+      Tuple<bool, string, string, string> resultadoAutenticacao = formCadastro.ConsultarDados(nome, senha);
+
+      if (resultadoAutenticacao.Item1)
       {
-        MessageBox.Show("Saída realizada em " + now);
+        string id = resultadoAutenticacao.Item2;
+        string nomeCompleto = resultadoAutenticacao.Item3;
+        string nomeUsuario = resultadoAutenticacao.Item4;
+
+
+        try
+        {
+          string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
+
+          using (MySqlConnection conexao = new MySqlConnection(strConnection))
+          {
+            conexao.Open();
+
+            using (MySqlCommand comando = new MySqlCommand())
+            {
+              comando.Connection = conexao;
+              comando.CommandText = "INSERT INTO logins (nome_logado, dayNhour) " +
+                                    "VALUES (@nome_completo, @data_registro)";
+              comando.Parameters.AddWithValue("@nome_completo", nomeCompleto);
+              comando.Parameters.AddWithValue("@data_registro", DateTime.Now);
+
+              comando.ExecuteNonQuery();
+              MessageBox.Show("Saída realizada em " + DateTime.Now);
+            }
+          }
+        }
+        catch (Exception ex)
+        {
+          MessageBox.Show("Erro \n" + ex.Message);
+        }
       }
       else
       {
@@ -88,10 +149,9 @@ namespace Relogio_Ponto
         txtSenha.Text = "";
         txtUsuario.Focus();
       }
+
       txtUsuario.Text = string.Empty;
       txtSenha.Text = string.Empty;
-
-      // fazer envio para banco de dados da hora de saída
     }
 
     private void btnCadastrar_Click(object sender, EventArgs e)

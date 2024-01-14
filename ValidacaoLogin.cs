@@ -9,11 +9,13 @@ namespace Relogio_Ponto
   {
     private static Usuario[] usuarios =
     {
-    };
+
+        };
 
     private static string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
 
-    public bool ConsultarDados(string nome, string senha)
+    // Modifique a assinatura para retornar uma tupla
+    public Tuple<bool, string, string, string> ConsultarDados(string nome, string senha)
     {
       MySqlConnection conexao = new MySqlConnection(strConnection); // Mova a declaração para fora do bloco 'using'
 
@@ -38,12 +40,16 @@ namespace Relogio_Ponto
           if (dados.Rows.Count > 0)
           {
             // Usuário autenticado
-            return true;
+            string id = dados.Rows[0]["id"].ToString();
+            string nomeCompleto = dados.Rows[0]["nome_completo"].ToString();
+            string nomeUsuario = dados.Rows[0]["user_name"].ToString();
+
+            return new Tuple<bool, string, string, string>(true, id, nomeCompleto, nomeUsuario);
           }
           else
           {
             // Usuário não encontrado ou senha incorreta
-            return false;
+            return new Tuple<bool, string, string, string>(false, null, null, null);
           }
         }
       }
@@ -51,7 +57,7 @@ namespace Relogio_Ponto
       {
         // Trate a exceção conforme necessário
         MessageBox.Show(ex.Message);
-        return false;
+        return new Tuple<bool, string, string, string>(false, null, null, null);
       }
       finally
       {
