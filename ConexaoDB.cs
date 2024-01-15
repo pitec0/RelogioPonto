@@ -1,9 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Relogio_Ponto
@@ -35,7 +31,6 @@ namespace Relogio_Ponto
       {
         conexao.Close();
       }
-
 
       string strConnection2 = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
 

@@ -1,6 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
-using System.Data;
 using System.Windows.Forms;
 
 namespace Relogio_Ponto
@@ -43,7 +42,6 @@ namespace Relogio_Ponto
         string nomeCompleto = resultadoAutenticacao.Item3;
         string nomeUsuario = resultadoAutenticacao.Item4;
 
-
         try
         {
           string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
@@ -63,7 +61,6 @@ namespace Relogio_Ponto
               comando.ExecuteNonQuery();
 
               MessageBox.Show("Entrada realizada em " + DateTime.Now);
-
             }
           }
         }
@@ -114,7 +111,6 @@ namespace Relogio_Ponto
         string id = resultadoAutenticacao.Item2;
         string nomeCompleto = resultadoAutenticacao.Item3;
         string nomeUsuario = resultadoAutenticacao.Item4;
-
 
         try
         {
