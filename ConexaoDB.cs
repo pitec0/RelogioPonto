@@ -56,8 +56,10 @@ namespace Relogio_Ponto
       catch (Exception ex)
       {
       }
-      
-
+      finally
+      {
+        conexao.Close();
+      }
     }
   }
 }
