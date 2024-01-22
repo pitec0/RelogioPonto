@@ -16,7 +16,7 @@ namespace Relogio_Ponto
     //criar parametro no db para nome de ENTRADA E SAIDA
     //criar parametro no db para nome de ENTRADA E SAIDA
     //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA.
 
     private void btnEntrada_Click(object sender, EventArgs e)
     {
