@@ -8,7 +8,6 @@ namespace Relogio_Ponto
   {
     private void Form1_Load(object sender, EventArgs e)
     {
-      // Se necessário, adicione código de inicialização aqui.
     }
 
     private void btnEntrada_Click(object sender, EventArgs e)
@@ -44,7 +43,7 @@ namespace Relogio_Ponto
 
         try
         {
-          string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
+          string strConnection = "server=127.0.0.1;User Id=root;database=relogio_ponto;password=root";
 
           using (MySqlConnection conexao = new MySqlConnection(strConnection))
           {
@@ -114,7 +113,7 @@ namespace Relogio_Ponto
 
         try
         {
-          string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
+          string strConnection = "server=127.0.0.1;User Id=root;database=relogio_ponto;password=root";
 
           using (MySqlConnection conexao = new MySqlConnection(strConnection))
           {
