@@ -9,6 +9,14 @@ namespace Relogio_Ponto
     private void Form1_Load(object sender, EventArgs e)
     {
     }
+    //criar parametro no db para nome de ENTRADA E SAIDA PARA PODER FAZER FILTAGEM DE QUANDO ENTROU E QUANDO SAIU.
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
+    //criar parametro no db para nome de ENTRADA E SAIDA
 
     private void btnEntrada_Click(object sender, EventArgs e)
     {
@@ -111,6 +119,7 @@ namespace Relogio_Ponto
         string nomeCompleto = resultadoAutenticacao.Item3;
         string nomeUsuario = resultadoAutenticacao.Item4;
 
+        
         try
         {
           string strConnection = "server=127.0.0.1;User Id=root;database=relogio_ponto;password=root";
