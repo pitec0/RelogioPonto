@@ -10,13 +10,13 @@ namespace Relogio_Ponto
     {
     }
     //criar parametro no db para nome de ENTRADA E SAIDA PARA PODER FAZER FILTAGEM DE QUANDO ENTROU E QUANDO SAIU.
-    //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
-    //criar parametro no db para nome de ENTRADA E SAIDA
     //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA.
+    //criar parametro no db para nome de ENTRADA E SAIDA..
 
     private void btnEntrada_Click(object sender, EventArgs e)
     {
