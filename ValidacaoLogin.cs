@@ -12,7 +12,7 @@ namespace Relogio_Ponto
 
         };
 
-    private static string strConnection = "server=127.0.0.1;User Id=Piteco;database=relogio_ponto;password=Pitecoso123@";
+    private static string strConnection = "server=127.0.0.1;User Id=root;database=relogio_ponto;password=root";
 
     // Modifique a assinatura para retornar uma tupla
     public Tuple<bool, string, string, string> ConsultarDados(string nome, string senha)
